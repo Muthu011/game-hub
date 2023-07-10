@@ -32,21 +32,22 @@ const GameGrid = ({ gameQuery }: Props) => {
     );
   }
 
+  if (error) {
+    return <span>{error}</span>;
+  }
+
   return (
-    <>
-      {error && <span>{error}</span>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        spacing={3}
-        padding={10}
-      >
-        {data.map((game, index) => (
-          <GameCardContainer key={game.id + index}>
-            <GameCards key={game.id} game={game} />
-          </GameCardContainer>
-        ))}
-      </SimpleGrid>
-    </>
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+      spacing={3}
+      padding={10}
+    >
+      {data.map((game, index) => (
+        <GameCardContainer key={game.id + index}>
+          <GameCards key={game.id} game={game} />
+        </GameCardContainer>
+      ))}
+    </SimpleGrid>
   );
 };
 
